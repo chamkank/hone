@@ -7,12 +7,14 @@ class CSVUtils:
     def __init__(self, csv_filepath):
         self.filepath = csv_filepath
 
+    # Parses and returns first row of CSV (column names)
     def get_column_names(self):
         f = open(self.filepath, 'r')
         cols = self.parse_row(f.readline())
         f.close()
         return cols
 
+    # Returns parsed rows of CSV (excluding column names)
     def get_data_rows(self):
         data_rows = []
         f = open(self.filepath, 'r')
@@ -27,6 +29,7 @@ class CSVUtils:
         return data_rows
 
     @staticmethod
+    # Parse given row (list of cells)
     def parse_row(row):
         row = row[:-1]
         cells = []
@@ -52,9 +55,3 @@ class CSVUtils:
 
         cells = [cell.strip(' "') for cell in cells]
         return cells
-
-
-if __name__ == '__main__':
-    csv = CSVUtils("worldbank.csv")
-    print(csv.get_column_names())
-    print(csv.get_data_rows())
