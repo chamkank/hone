@@ -2,6 +2,7 @@
 Simple methods for processing CSV files
 """
 
+from contextlib import contextmanager
 
 class CSVUtils:
     def __init__(self, csv_filepath):
@@ -9,31 +10,34 @@ class CSVUtils:
 
     # Parses and returns first row of CSV (column names)
     def get_column_names(self):
-        f = self.open_csv()
-        cols = self.parse_row(f.readline())
-        f.close()
+        with self.open_csv() as f:
+            cols = self.parse_row(f.readline())
         return cols
 
     # Returns parsed rows of CSV (excluding column names)
     def get_data_rows(self):
         data_rows = []
-        f = self.open_csv()
-        f.readline()  # discard column names
-        while True:
-            row = f.readline()
-            if row != '':
-                data_rows.append(self.parse_row(row))
-            else:
-                break
-        f.close()
+        with self.open_csv() as f:
+            f.readline()  # discard column names
+            while True:
+                row = f.readline()
+                if row != '':
+                    data_rows.append(self.parse_row(row))
+                else:
+                    break
         return data_rows
 
     # Open CSV in given mode (default is read mode)
+    @contextmanager
     def open_csv(self, mode='r'):
-        return open(self.filepath, mode, encoding='utf-8-sig')
+        f = open(self.filepath, mode, encoding='utf-8-sig')
+        try:
+            yield f
+        finally:
+            f.close()
 
-    @staticmethod
     # Parse given row (list of cells)
+    @staticmethod
     def parse_row(row):
         row = row[:-1]
         cells = []
