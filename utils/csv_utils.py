@@ -9,7 +9,7 @@ class CSVUtils:
 
     # Parses and returns first row of CSV (column names)
     def get_column_names(self):
-        f = open(self.filepath, 'r')
+        f = self.open_csv()
         cols = self.parse_row(f.readline())
         f.close()
         return cols
@@ -17,7 +17,7 @@ class CSVUtils:
     # Returns parsed rows of CSV (excluding column names)
     def get_data_rows(self):
         data_rows = []
-        f = open(self.filepath, 'r')
+        f = self.open_csv()
         f.readline()  # discard column names
         while True:
             row = f.readline()
@@ -27,6 +27,10 @@ class CSVUtils:
                 break
         f.close()
         return data_rows
+
+    # Open CSV in given mode (default is read mode)
+    def open_csv(self, mode='r'):
+        return open(self.filepath, mode, encoding='utf-8-sig')
 
     @staticmethod
     # Parse given row (list of cells)
