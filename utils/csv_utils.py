@@ -52,3 +52,9 @@ class CSVUtils:
 
         cells = [cell.strip(' "') for cell in cells]
         return cells
+
+
+if __name__ == '__main__':
+    csv = CSVUtils("worldbank.csv")
+    print(csv.get_column_names())
+    print(csv.get_data_rows())
