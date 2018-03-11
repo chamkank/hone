@@ -35,8 +35,17 @@ class TableNest:
     {'birth day':'birth.day', 'birth month': 'birth.month'}
     '''
 
-    def map_structure_to_columns(self, column_names, structure):
-        pass  # TODO
+    def map_structure_to_columns(self, structure, column_names):
+        mapping = {}
+        for col in column_names:
+            if col in structure.keys():
+                mapping[col] = col
+                continue
+            else:
+                # TODO
+        return mapping
+
+
 
     '''
     Generate recursively-nested JSON structure from column_names.
@@ -126,5 +135,7 @@ class TableNest:
 if __name__ == '__main__':
     control = TableNest("/tests/data/small_cats_dataset")
     print(control.get_valid_splits("birth date __date"))
-    print(control.generate_full_structure(['name', 'age (years)', 'weight (kg)', 'birth day',
-                             'birth month a', 'birth month b', 'birth year', 'adopted', 'adopted_since']))
+    column_names = {'name', 'age (years)', 'weight (kg)', 'birth day',
+                             'birth month a', 'birth month b', 'birth year', 'adopted', 'adopted_since'}
+    struct = control.generate_full_structure(column_names)
+    print(control.map_structure_to_columns(struct, column_names))
