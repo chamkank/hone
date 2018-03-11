@@ -44,7 +44,6 @@ class TableNest:
 
     def generate_full_structure(self, column_names):
         structure = self.get_nested_structure(column_names)
-        print(structure)
         if len(structure) > 1:
             for k, v in structure.items():
                 if v != {}:
@@ -125,7 +124,7 @@ class TableNest:
 
 
 if __name__ == '__main__':
-    control = TableNest()
+    control = TableNest("/tests/data/small_cats_dataset")
     print(control.get_valid_splits("birth date __date"))
     print(control.generate_full_structure(['name', 'age (years)', 'weight (kg)', 'birth day',
                              'birth month a', 'birth month b', 'birth year', 'adopted', 'adopted_since']))
