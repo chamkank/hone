@@ -4,7 +4,7 @@ from utils import csv_utils
 
 class Hone:
     def __init__(self, csv_filepath):
-        self.delimit_chars = [' ', '_', ',']
+        self.delimit_chars = set([' ', '_', ','])
         self.csv_filepath = csv_filepath
         self.csv = csv_utils.CSVUtils(self.csv_filepath)
 
