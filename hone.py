@@ -2,7 +2,7 @@ import json
 from utils import csv_utils
 
 
-class TableNest:
+class Hone:
     def __init__(self, csv_filepath):
         self.delimit_chars = [' ', '_', ',']
         self.csv_filepath = csv_filepath
