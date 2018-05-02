@@ -1,23 +1,12 @@
-import json
-from utils import csv_utils
+import argparse
+from utils import csv_utils, json_utils
 
 
 class Hone:
     def __init__(self, csv_filepath):
-        self.delimit_chars = set([' ', '_', ','])
+        self.delimit_chars = {' ', '_', ','}
         self.csv_filepath = csv_filepath
         self.csv = csv_utils.CSVUtils(self.csv_filepath)
-
-    '''
-    Returns nested JSON generated from given CSV file as string.
-    '''
-
-    def get_json_string(self):
-        column_names = self.csv.get_column_names()
-        data_rows = self.csv.get_data_rows()
-        structure = self.generate_full_structure(column_names)
-        nested_json = self.populate_structure_with_data(structure, column_names, data_rows)
-        return json.dumps(nested_json)
 
     '''
     Perform automatic nesting
@@ -50,7 +39,7 @@ class Hone:
     '''
     Get generated JSON schema.
     '''
-    
+
     def get_schema(self, column_names):
         return self.generate_full_structure(column_names)
 
@@ -173,3 +162,26 @@ class Hone:
             if base[len(prefix)] in self.delimit_chars:
                 return True
         return False
+
+
+def get_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('csv_filepath')
+    parser.add_argument('json_filepath')
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = get_args()
+    hone = Hone(args.csv_filepath)
+    try:
+        print("Converting CSV file...")
+        json_struct = hone.autonest()
+    except Exception:
+        print("ERROR: Failed to convert CSV to JSON.")
+    try:
+        print("Saving JSON file...")
+        json_utils.save_json(json_struct, args.json_filepath)
+    except Exception:
+        print("ERROR: Failed to write JSON to specified file.")
+    print("Conversion complete! JSON written to", args.json_filepath)
