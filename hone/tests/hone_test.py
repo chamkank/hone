@@ -11,7 +11,7 @@ csv_B_path = os.path.join(dirname, "data", "comma_test.csv")
 class TestHone(unittest.TestCase):
     def test_nest_small_csv(self):
         tn_A = hone.Hone(csv_A_path)
-        result = tn_A.autonest()
+        result = tn_A.convert()
         self.assertListEqual(result,
                              [{'adopted_since': '2018', 'adopted': 'TRUE',
                                'birth': {'year': '2015', 'month': 'January', 'day': '18'}, 'weight (kg)': '3.1',
@@ -29,7 +29,7 @@ class TestHone(unittest.TestCase):
 
     def test_nest_comma_csv(self):
         tn_B = hone.Hone(csv_B_path)
-        result = tn_B.autonest()
+        result = tn_B.convert()
         self.assertListEqual(result, [{'beep': '2', 'test"",""ing': '1'}])
 
 

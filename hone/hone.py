@@ -9,9 +9,9 @@ class Hone:
         self.csv = csv_utils.CSVUtils(self.csv_filepath)
 
     '''
-    Perform automatic nesting
+    Perform CSV to nested JSON conversion and return resulting JSON.
     '''
-    def autonest(self):
+    def convert(self):
         column_names = self.csv.get_column_names()
         data = self.csv.get_data_rows()
         column_struct = self.generate_full_structure(column_names)
@@ -176,7 +176,7 @@ if __name__ == "__main__":
     hone = Hone(args.csv_filepath)
     try:
         print("Converting CSV file...")
-        json_struct = hone.autonest()
+        json_struct = hone.convert()
     except Exception:
         print("ERROR: Failed to convert CSV to JSON.")
     try:
