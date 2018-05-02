@@ -58,7 +58,7 @@ class CSVUtils:
             i += 1
 
         # add last cell in row
-        if split_index != len(row)-1:
+        if split_index != len(row):
             cells.append(row[split_index:])
 
         cells = [cell.strip(' "') for cell in cells]

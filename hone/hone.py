@@ -124,7 +124,7 @@ class Hone:
                 split = self.clean_split(column_name[0:i])
                 splits.append(split)
             i -= 1
-        return sorted(list(set(splits)), reverse=True)
+        return sorted(list(set(splits)))
 
     '''
     Returns string after split without delimiting characters.
