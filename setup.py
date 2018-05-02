@@ -12,7 +12,6 @@ setup(
     project_urls={
         "Source Code": 'https://github.com/chamkank/hone'
     },
-    packages=find_packages(),
-    package_data={'': ['*.csv', '*.json']}
+    packages=find_packages()
 )
 

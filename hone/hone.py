@@ -174,14 +174,9 @@ def get_args():
 if __name__ == "__main__":
     args = get_args()
     hone = Hone(args.csv_filepath)
-    try:
-        print("Converting CSV file...")
-        json_struct = hone.convert()
-    except Exception:
-        print("ERROR: Failed to convert CSV to JSON.")
-    try:
-        print("Saving JSON file...")
-        json_utils.save_json(json_struct, args.json_filepath)
-    except Exception:
-        print("ERROR: Failed to write JSON to specified file.")
+    print("Converting CSV file...")
+    json_struct = hone.convert()
+    print("Saving JSON file...")
+    json_utils.save_json(json_struct, args.json_filepath)
     print("Conversion complete! JSON written to", args.json_filepath)
+
