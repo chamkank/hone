@@ -1,6 +1,6 @@
 import os
 import unittest
-from ..utils import csv_utils
+from hone.utils import csv_utils
 
 dirname = os.path.dirname(__file__)
 csv_A_path = os.path.join(dirname, "data", "small_cats_dataset.csv")
