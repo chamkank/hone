@@ -115,13 +115,6 @@ class Hone:
         return result
 
     '''
-    Merge two dictionaries and return the result.
-    '''
-
-    def merge_dictionaries(self, a, b):
-        return {**a, **b}
-
-    '''
     Returns all valid splits for a given column name in descending order by length
     '''
 
