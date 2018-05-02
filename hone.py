@@ -46,6 +46,14 @@ class Hone:
                 i += 1
             json_struct.append(json_row)
         return json_struct
+
+    '''
+    Get generated JSON schema.
+    '''
+    
+    def get_schema(self, column_names):
+        return self.generate_full_structure(column_names)
+
     '''
     Generate recursively-nested JSON structure from column_names.
     '''
