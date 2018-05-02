@@ -1,6 +1,5 @@
 import os
 import unittest
-from ..utils import csv_utils
 from .. import hone
 
 dirname = os.path.dirname(__file__)
