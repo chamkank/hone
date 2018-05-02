@@ -3,19 +3,19 @@ from hone.utils import csv_utils, json_utils
 
 
 class Hone:
-    def __init__(self, csv_filepath):
+    def __init__(self):
         self.delimit_chars = {' ', '_', ','}
-        self.csv_filepath = csv_filepath
+        self.csv_filepath = None
         self.csv = csv_utils.CSVUtils(self.csv_filepath)
-
     '''
     Perform CSV to nested JSON conversion and return resulting JSON.
     '''
-    def convert(self):
+    def convert(self, csv_filepath):
+        self.set_csv_filepath(csv_filepath)
         column_names = self.csv.get_column_names()
         data = self.csv.get_data_rows()
-        column_struct = self.generate_full_structure(column_names)
-        json_struct = self.populate_structure_with_data(column_struct, column_names, data)
+        column_schema = self.generate_full_structure(column_names)
+        json_struct = self.populate_structure_with_data(column_schema, column_names, data)
         return json_struct
     '''
     Returns dictionary with given data rows fitted to given structure.
@@ -40,8 +40,12 @@ class Hone:
     Get generated JSON schema.
     '''
 
-    def get_schema(self, column_names):
-        return self.generate_full_structure(column_names)
+    def get_schema(self, csv_filepath):
+        self.set_csv_filepath(csv_filepath)
+        column_names = self.csv.get_column_names()
+        data = self.csv.get_data_rows()
+        column_struct = self.generate_full_structure(column_names)
+        return column_struct
 
     '''
     Generate recursively-nested JSON structure from column_names.
@@ -163,6 +167,10 @@ class Hone:
                 return True
         return False
 
+    def set_csv_filepath(self, csv_filepath):
+        self.csv_filepath = csv_filepath
+        self.csv.filepath = self.csv_filepath
+
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -173,9 +181,9 @@ def get_args():
 
 if __name__ == "__main__":
     args = get_args()
-    hone = Hone(args.csv_filepath)
+    hone = Hone()
     print("Converting CSV file...")
-    json_struct = hone.convert()
+    json_struct = hone.convert(args.csv_filepath)
     print("Saving JSON file...")
     json_utils.save_json(json_struct, args.json_filepath)
     print("Conversion complete! JSON written to", args.json_filepath)
