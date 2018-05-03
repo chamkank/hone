@@ -1,4 +1,4 @@
-# :knife: hone
+# :hibiscus: hone
 [![PyPI version](https://badge.fury.io/py/hone.svg)](https://badge.fury.io/py/hone)
 [![PyPI license](https://img.shields.io/pypi/l/hone.svg)](https://pypi.python.org/pypi/hone/)
 
