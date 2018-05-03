@@ -1,10 +1,9 @@
-import argparse
 from hone.utils import csv_utils, json_utils
 
 
 class Hone:
     def __init__(self):
-        self.delimit_chars = {' ', '_', ','}
+        self.delimit_chars = json_utils.load_config()['delimit_chars']
         self.csv_filepath = None
         self.csv = csv_utils.CSVUtils(self.csv_filepath)
     '''
