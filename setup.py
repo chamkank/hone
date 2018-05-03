@@ -14,9 +14,10 @@ setup(
     },
     packages=find_packages(),
     install_requires=[],
-    entry_points={'setuptools.installation': [
-        'eggsecutable = hone'
-    ]},
+    entry_points={'console_scripts': ['hone=hone.__main__:main']},
+    package_data={
+        'hone': ['config.json'],
+    },
     classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",

@@ -17,5 +17,3 @@ def main():
     print("Saving JSON file...")
     json_utils.save_json(json_struct, args.json_filepath)
     print("Conversion complete! JSON written to", args.json_filepath)
-
-main()
