@@ -1,28 +1,32 @@
-[{
-	"reference name": "Clara",
-	"reference": "TRUE",
-	"birth": {
-		"year": "1996",
-		"month": "June",
-		"day": "12"
-	},
-	"name": "Rick"
-}, {
-	"reference name": "Clara",
-	"reference": "TRUE",
-	"birth": {
-		"year": "1996",
-		"month": "June",
-		"day": "12"
-	},
-	"name": "Rick"
-}, {
-	"reference name": "Clara",
-	"reference": "TRUE",
-	"birth": {
-		"year": "1996",
-		"month": "June",
-		"day": "12"
-	},
-	"name": "Rick"
-}]
+[
+  {
+    "birth": {
+      "day": "12",
+      "month": "June",
+      "year": "1996"
+    },
+    "name": "Rick",
+    "reference": "TRUE",
+    "reference name": "Clara"
+  },
+  {
+    "birth": {
+      "day": "12",
+      "month": "June",
+      "year": "1996"
+    },
+    "name": "Rick",
+    "reference": "TRUE",
+    "reference name": "Clara"
+  },
+  {
+    "birth": {
+      "day": "12",
+      "month": "June",
+      "year": "1996"
+    },
+    "name": "Rick",
+    "reference": "TRUE",
+    "reference name": "Clara"
+  }
+]
