@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='hone',
@@ -12,10 +12,10 @@ setup(
     project_urls={
         "Source Code": 'https://github.com/chamkank/hone'
     },
-    packages=['hone'],
+    packages=find_packages(),
     install_requires=[],
     entry_points={'setuptools.installation': [
-        'eggsecutable = hone:__main__'
+        'eggsecutable = hone'
     ]},
     classifiers=[
         "Programming Language :: Python",
