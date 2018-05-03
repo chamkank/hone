@@ -8,7 +8,7 @@ Convert CSV to automatically nested JSON.
       + [Installation](#installation)
       + [Usage: Command Line](#usage-command-line)
       + [Usage: Python Module](#usage-python-module)
-      + [Additional Configuration](#additional-configuration)
+      + [Delimiters](#delimiters)
    + [Examples](#examples)
    + [License](#license)
 <!--te-->
@@ -36,8 +36,8 @@ Hone = hone.Hone()
 schema = Hone.get_schema('path/to/input.csv')   # returns nested JSON schema for input.csv
 result = Hone.convert('path/to/input.csv')      # returns converted JSON as Python dictionary
 ```
-### Additional Configuration
-You can change the delimited characters that are used to generate the nested structure. By default, these are commas, underscores, and spaces. To change this, modify the [configuration file](hone/config.json).
+### Delimiters
+The delimiters that are used to generate the nested structure are commas, underscores, and spaces.
 
 ## Examples
 
