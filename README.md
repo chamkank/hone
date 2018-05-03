@@ -10,7 +10,7 @@ pip install hone
 ```
 
 ### Usage: Command Line
-To convert a CSV file located at `path/to/input.csv` to JSON (written to file at `path/to/output.json`):
+To convert a CSV file located at `path/to/input.csv` to JSON (written to new file at `path/to/output.json`):
 
 ```
 hone "path/to/input.csv" "path/to/output.json"
@@ -24,44 +24,50 @@ Hone = hone.Hone()
 schema = Hone.get_schema('path/to/input.csv')   # returns nested JSON schema for input.csv
 result = Hone.convert('path/to/input.csv')      # returns converted JSON as Python dictionary
 ```
+### Additional Configuration
+You can change the delimited characters that are used to generate the nested structure. By default, these are commas, underscores, and spaces. To change this, modify the [configuration file](hone/config.json).
 
 ## Examples
 
-You can view examples of conversions done with Hone in the [examples](/examples) directory.
+You can view all examples of conversions in the [examples](/examples) directory.
 ### CSV
 | name  | birth day | birth month | birth year | reference | reference name | 
 |-------|-----------|-------------|------------|-----------|----------------| 
 | Bob   | 7         | May         | 1985       | TRUE      | Smith          | 
 | Julia | 21        | January     | 1997       | FALSE     | N/A            | 
 | Rick  | 12        | June        | 1996       | TRUE      | Clara          | 
-### Nested JSON
+### Generated JSON
 ```
-[{
-	"reference name": "Clara",
-	"reference": "TRUE",
-	"birth": {
-		"year": "1996",
-		"month": "June",
-		"day": "12"
-	},
-	"name": "Rick"
-}, {
-	"reference name": "Clara",
-	"reference": "TRUE",
-	"birth": {
-		"year": "1996",
-		"month": "June",
-		"day": "12"
-	},
-	"name": "Rick"
-}, {
-	"reference name": "Clara",
-	"reference": "TRUE",
-	"birth": {
-		"year": "1996",
-		"month": "June",
-		"day": "12"
-	},
-	"name": "Rick"
-}]
+[
+  {
+    "birth": {
+      "day": "12",
+      "month": "June",
+      "year": "1996"
+    },
+    "name": "Rick",
+    "reference": "TRUE",
+    "reference name": "Clara"
+  },
+  {
+    "birth": {
+      "day": "12",
+      "month": "June",
+      "year": "1996"
+    },
+    "name": "Rick",
+    "reference": "TRUE",
+    "reference name": "Clara"
+  },
+  {
+    "birth": {
+      "day": "12",
+      "month": "June",
+      "year": "1996"
+    },
+    "name": "Rick",
+    "reference": "TRUE",
+    "reference name": "Clara"
+  }
+]
 ``
