@@ -1,5 +1,17 @@
 # :knife: hone
-Convert CSV to automatically nested JSON.`
+Convert CSV to automatically nested JSON.
+
+## Table of Contents
+<!--ts-->
+   + [Installation](#installation)
+   + [Getting Started](#getting-started)
+      + [Installation](#installation)
+      + [Usage: Command Line](#usage-command-line)
+      + [Usage: Python Module](#usage-python-module)
+      + [Additional Configuration](#additional-configuration)
+   + [Examples](#examples)
+   + [License](#license)
+<!--te-->
 
 ## Getting Started
 Available as both a [Python module](#usage-python-module) and a [command line tool](#usage-command-line).
@@ -70,4 +82,6 @@ You can view all examples of conversions in the [examples](/examples) directory.
     "reference name": "Clara"
   }
 ]
-``
+```
+# License
+Hone is licensed under the [MIT license](LICENSE).
