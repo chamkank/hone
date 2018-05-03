@@ -12,18 +12,56 @@ class TestHone(unittest.TestCase):
         tn_A = hone.Hone()
         result = tn_A.convert(csv_A_path)
         self.assertListEqual(result,
-                             [{'adopted_since': '2018', 'adopted': 'TRUE',
-                               'birth': {'year': '2015', 'month': 'January', 'day': '18'}, 'weight (kg)': '3.1',
-                               'age (years)': '3', 'name': 'Ciel'}, {'adopted_since': '2018', 'adopted': 'TRUE',
-                                                                     'birth': {'year': '2015', 'month': 'January',
-                                                                               'day': '18'}, 'weight (kg)': '3.1',
-                                                                     'age (years)': '3', 'name': 'Ciel'},
-                              {'adopted_since': '2018', 'adopted': 'TRUE',
-                               'birth': {'year': '2015', 'month': 'January', 'day': '18'}, 'weight (kg)': '3.1',
-                               'age (years)': '3', 'name': 'Ciel'}, {'adopted_since': '2018', 'adopted': 'TRUE',
-                                                                     'birth': {'year': '2015', 'month': 'January',
-                                                                               'day': '18'}, 'weight (kg)': '3.1',
-                                                                     'age (years)': '3', 'name': 'Ciel'}]
+                             [
+                                 {
+                                     "adopted": "TRUE",
+                                     "adopted_since": "2012",
+                                     "age (years)": "5",
+                                     "birth": {
+                                         "day": "11",
+                                         "month": "April",
+                                         "year": "2011"
+                                     },
+                                     "name": "Tommy",
+                                     "weight (kg)": "3.6"
+                                 },
+                                 {
+                                     "adopted": "FALSE",
+                                     "adopted_since": "N/A",
+                                     "age (years)": "2",
+                                     "birth": {
+                                         "day": "6",
+                                         "month": "May",
+                                         "year": "2015"
+                                     },
+                                     "name": "Clara",
+                                     "weight (kg)": "8.2"
+                                 },
+                                 {
+                                     "adopted": "TRUE",
+                                     "adopted_since": "2017",
+                                     "age (years)": "6",
+                                     "birth": {
+                                         "day": "21",
+                                         "month": "August",
+                                         "year": "2011"
+                                     },
+                                     "name": "Catnip",
+                                     "weight (kg)": "3.3"
+                                 },
+                                 {
+                                     "adopted": "TRUE",
+                                     "adopted_since": "2018",
+                                     "age (years)": "3",
+                                     "birth": {
+                                         "day": "18",
+                                         "month": "January",
+                                         "year": "2015"
+                                     },
+                                     "name": "Ciel",
+                                     "weight (kg)": "3.1"
+                                 }
+                             ]
                              )
     def test_get_schema(self):
         tn_A = hone.Hone()
