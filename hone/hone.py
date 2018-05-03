@@ -1,5 +1,5 @@
 from hone.utils import csv_utils
-
+import copy
 
 class Hone:
     def __init__(self):
@@ -25,7 +25,8 @@ class Hone:
         num_columns = len(column_names)
         mapping = self.get_leaves(structure)
         for row in data_rows:
-            json_row, i = structure, 0
+            json_row = copy.deepcopy(structure)
+            i = 0
             while i < num_columns:
                 cell = row[i]
                 column_name = column_names[i]

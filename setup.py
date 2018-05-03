@@ -5,7 +5,7 @@ long_description = open(os.path.join(os.path.dirname(__file__), "README.rst")).r
 
 setup(
     name='hone',
-    version='0.1.3',
+    version='0.1.4',
     author='Chamantha Kankanamge',
     author_email='chamkdev@gmail.com',
     license='MIT',

@@ -56,23 +56,23 @@ You can view all examples of conversions in the [examples](/examples) directory.
 [
   {
     "birth": {
-      "day": "12",
-      "month": "June",
-      "year": "1996"
+      "day": "7",
+      "month": "May",
+      "year": "1985"
     },
-    "name": "Rick",
+    "name": "Bob",
     "reference": "TRUE",
-    "reference name": "Clara"
+    "reference name": "Smith"
   },
   {
     "birth": {
-      "day": "12",
-      "month": "June",
-      "year": "1996"
+      "day": "21",
+      "month": "January",
+      "year": "1997"
     },
-    "name": "Rick",
-    "reference": "TRUE",
-    "reference name": "Clara"
+    "name": "Julia",
+    "reference": "FALSE",
+    "reference name": "N/A"
   },
   {
     "birth": {
