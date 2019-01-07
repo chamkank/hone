@@ -3,6 +3,7 @@ Simple methods for processing CSV files
 """
 
 from contextlib import contextmanager
+import re
 
 class CSVUtils:
     def __init__(self, csv_filepath):
@@ -27,6 +28,31 @@ class CSVUtils:
                     break
         return data_rows
 
+    def data_type_check(self, cell_data,column_names):
+        # return data type, only checks for accountID, integer or string, boolean could be added
+        accountid = re.compile("^[0-9]{12}$")
+        number = re.compile("^\d+$")
+        row = 0
+        col = 0
+        cell_type = []
+        inner_array = []
+
+        while row < len(cell_data):
+            while col < (len(column_names)):
+                if accountid.match(cell_data[row][col]):
+                    inner_array.append('string')
+                else:
+                    if number.match(cell_data[row][col]):
+                        inner_array.append('integer')
+                    else:
+                        inner_array.append('string')
+                col += 1
+            cell_type.append(inner_array)
+            row += 1
+        
+        #print(cell_type)
+        return cell_type
+
     # Open CSV in given mode (default is read mode)
     @contextmanager
     def open_csv(self, mode='r'):
@@ -48,7 +74,9 @@ class CSVUtils:
 
         # parse rows
         while i < len(row):
+            
             c = row[i]
+
             if c == '"':
                 quote_flag = not quote_flag
             elif c == ',':
