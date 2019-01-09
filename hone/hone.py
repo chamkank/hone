@@ -15,37 +15,30 @@ class Hone:
         data = self.csv.get_data_rows()
         cell_type = self.csv.data_type_check(data,column_names)
         column_schema = self.generate_full_structure(column_names)
-        # change
         json_struct = self.populate_structure_with_data(column_schema, column_names, data, cell_type)
-        # was json_struct = self.populate_structure_with_data(column_schema, column_names, data)
         return json_struct
     '''
     Returns dictionary with given data rows fitted to given structure.
     '''
 
     def populate_structure_with_data(self, structure, column_names, data_rows, cell_type):
-        # change ..added cell_type..
         json_struct = []
         num_columns = len(column_names)
         mapping = self.get_leaves(structure)
         row = 0
         while row < len(data_rows):
-        # change - was ...for row in data_rows:...
             json_row = copy.deepcopy(structure)
             col = 0
-            # changed i to col
             while col < len(column_names):
                 column_name = column_names[col]
                 key_path = mapping[column_name]
-                # Changes
                 if cell_type[row][col] == 'string':
                     exec("json_row"+key_path+"="+"'"+data_rows[row][col]+"'")
                 else:
                     exec("json_row"+key_path+"="+data_rows[row][col])
                 col += 1
             json_struct.append(json_row)
-            row +=1
-            
+            row += 1
         return json_struct
 
     '''
@@ -77,7 +70,6 @@ class Hone:
                 if split in column_names:
                     continue
                 for c2 in column_names:
-                    #print(c1,c2)
                     if c2 not in visited and self.is_valid_prefix(split, c2):
                         nodes[split][self.get_split_suffix(split, c2)] = c2
                 if len(nodes[split].keys()) > 1:
@@ -126,7 +118,6 @@ class Hone:
                 self.get_leaves(value, path+"['"+key+"']", result)
             else:
                 result[value] = path+"['"+key+"']"
-    
         return result
 
     '''

@@ -49,8 +49,6 @@ class CSVUtils:
                 col += 1
             cell_type.append(inner_array)
             row += 1
-        
-        #print(cell_type)
         return cell_type
 
     # Open CSV in given mode (default is read mode)
@@ -74,9 +72,7 @@ class CSVUtils:
 
         # parse rows
         while i < len(row):
-            
             c = row[i]
-
             if c == '"':
                 quote_flag = not quote_flag
             elif c == ',':
