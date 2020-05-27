@@ -12,6 +12,8 @@ Convert CSV to automatically nested JSON.
       + [Usage: Python Module](#usage-python-module)
       + [Delimiters](#delimiters)
    + [Examples](#examples)
+   + [Development](#development)
+      + [Running tests](#running-tests)
    + [License](#license)
 <!--te-->
 
