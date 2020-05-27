@@ -18,6 +18,7 @@ setup(
     },
     packages=find_packages(),
     install_requires=[],
+    python_requires='>=3.0',
     entry_points={'console_scripts': ['hone=hone.__main__:main']},
     classifiers=[
         "Programming Language :: Python",
