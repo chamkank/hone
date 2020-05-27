@@ -6,6 +6,7 @@ class Hone:
         self.delimit_chars = [",", "_", " "]
         self.csv_filepath = None
         self.csv = csv_utils.CSVUtils(self.csv_filepath)
+
     '''
     Perform CSV to nested JSON conversion and return resulting JSON.
     '''
@@ -16,6 +17,7 @@ class Hone:
         column_schema = self.generate_full_structure(column_names)
         json_struct = self.populate_structure_with_data(column_schema, column_names, data)
         return json_struct
+        
     '''
     Returns dictionary with given data rows fitted to given structure.
     '''

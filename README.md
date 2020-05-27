@@ -6,13 +6,14 @@ Convert CSV to automatically nested JSON.
 
 ## Table of Contents
 <!--ts-->
-   + [Installation](#installation)
    + [Getting Started](#getting-started)
       + [Installation](#installation)
       + [Usage: Command Line](#usage-command-line)
       + [Usage: Python Module](#usage-python-module)
       + [Delimiters](#delimiters)
    + [Examples](#examples)
+   + [Development](#development)
+      + [Running tests](#running-tests)
    + [License](#license)
 <!--te-->
 
@@ -86,5 +87,10 @@ You can view all examples of conversions in the [examples](/examples) directory.
   }
 ]
 ```
+
+## Development
+### Running tests
+From the root directory of this repository, run `python3 -m unittest` to execute the entire test suite.
+
 # License
 Hone is licensed under the [MIT license](LICENSE).
