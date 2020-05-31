@@ -12,8 +12,5 @@ def get_args():
 def main():
     args = get_args()
     hone = Hone()
-    print("Converting CSV file...")
     json_struct = hone.convert(args.csv_filepath)
-    print("Saving JSON file...")
-    json_utils.save_json(json_struct, args.json_filepath)
-    print("Conversion complete! JSON written to", args.json_filepath)
+    json_utils.output_json(json_struct, args.json_filepath)

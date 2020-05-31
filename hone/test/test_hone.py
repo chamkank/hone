@@ -15,19 +15,19 @@ json_B_path = os.path.join(dirname, "data", "comma_test", "nested_dataset.json")
 class TestHone(unittest.TestCase):
     def test_nest_small_csv(self):
         h = hone.Hone()
-        actualResult = h.convert(csv_A_path)
-        expectedResult = test_utils.parse_json_file(json_A_path)
-        self.assertListEqual(actualResult, expectedResult)
+        actual_result = h.convert(csv_A_path)
+        expected_result = test_utils.parse_json_file(json_A_path)
+        self.assertListEqual(actual_result, expected_result)
     def test_get_schema(self):
         h = hone.Hone()
-        actualResult = h.get_schema(csv_A_path)
-        expectedResult = test_utils.parse_json_file(json_schema_A_path)
-        self.assertDictEqual(actualResult, expectedResult)
+        actual_result = h.get_schema(csv_A_path)
+        expected_result = test_utils.parse_json_file(json_schema_A_path)
+        self.assertDictEqual(actual_result, expected_result)
     def test_nest_comma_csv(self):
         h = hone.Hone()
-        actualResult = h.convert(csv_B_path)
-        expectedResult = test_utils.parse_json_file(json_B_path)
-        self.assertListEqual(actualResult, expectedResult)
+        actual_result = h.convert(csv_B_path)
+        expected_result = test_utils.parse_json_file(json_B_path)
+        self.assertListEqual(actual_result, expected_result)
 
 
 if __name__ == '__main__':

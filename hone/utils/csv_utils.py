@@ -4,6 +4,7 @@ Simple helper methods for processing CSV files
 
 from contextlib import contextmanager
 import csv
+import fileinput
 
 class CSVUtils:
     def __init__(self, csv_filepath):
@@ -27,7 +28,7 @@ class CSVUtils:
     # Open CSV in given mode (default is read mode)
     @contextmanager
     def open_csv(self, mode='r', newline=''):
-        f = open(self.filepath, mode, encoding='utf8')
+        f = fileinput.input(files=(self.filepath), openhook=fileinput.hook_encoded("utf-8"))
         try:
             yield f
         finally:

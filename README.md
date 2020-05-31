@@ -1,4 +1,4 @@
-# :knife: hone
+# hone
 [![PyPI version](https://badge.fury.io/py/hone.svg)](https://badge.fury.io/py/hone)
 [![PyPI license](https://img.shields.io/pypi/l/hone.svg)](https://pypi.python.org/pypi/hone/)
 
@@ -10,6 +10,7 @@ Convert CSV to automatically nested JSON.
       + [Installation](#installation)
       + [Usage: Command Line](#usage-command-line)
       + [Usage: Python Module](#usage-python-module)
+      + [Standard I/O Support](#standard-i-support)
       + [Delimiters](#delimiters)
    + [Examples](#examples)
    + [Development](#development)
@@ -40,6 +41,8 @@ Hone = hone.Hone()
 schema = Hone.get_schema('path/to/input.csv')   # returns nested JSON schema for input.csv
 result = Hone.convert('path/to/input.csv')      # returns converted JSON as Python dictionary
 ```
+### Standard I/O Support
+What if you want to pass in the CSV data via standard input and/or print the generated JSON data to standard output? Simply replace the appropriate filename with a dash (`-`). This will replace the input/output file with `stdin`/`stdout`.
 ### Delimiters
 The delimiters that are used to generate the nested structure are commas, underscores, and spaces.
 
