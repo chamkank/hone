@@ -30,10 +30,11 @@ class Hone:
             json_row = copy.deepcopy(structure)
             i = 0
             while i < num_columns:
-                cell = row[i]
-                column_name = column_names[i]
+                cell = self.escape_quotes(row[i])
+                column_name = self.escape_quotes(column_names[i])
                 key_path = mapping[column_name]
-                exec("json_row"+key_path+"="+"'"+cell+"'")
+                command = f"json_row{key_path}=\"{cell}\""
+                exec(command)
                 i += 1
             json_struct.append(json_row)
         return json_struct
@@ -110,11 +111,14 @@ class Hone:
     '''
 
     def get_leaves(self, structure, path="", result={}):
-        for key, value in structure.items():
+        for k, v in structure.items():
+            key = self.escape_quotes(k)
+            value = v
             if type(value) is dict:
-                self.get_leaves(value, path+"['"+key+"']", result)
+                self.get_leaves(value, f"{path}['{key}']", result)
             else:
-                result[value] = path+"['"+key+"']"
+                value = self.escape_quotes(v)
+                result[value] = f"{path}['{key}']"
         return result
 
     '''
@@ -169,7 +173,17 @@ class Hone:
                 return True
         return False
 
+    '''
+    Replaces the current csv_filepath.
+    '''
     def set_csv_filepath(self, csv_filepath):
         self.csv_filepath = csv_filepath
         self.csv.filepath = self.csv_filepath
 
+    '''
+    Escapes all single and double quotes in a given string.
+    '''
+    def escape_quotes(self, string):
+        unescaped = string.replace('\\"', '"').replace("\\'", "'")
+        escaped = unescaped.replace('"', '\\"').replace("'", "\\'")
+        return escaped
