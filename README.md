@@ -10,8 +10,6 @@ Convert CSV to automatically nested JSON.
       + [Installation](#installation)
       + [Usage: Command Line](#usage-command-line)
       + [Usage: Python Module](#usage-python-module)
-      + [Standard I/O Support](#standard-i-support)
-      + [Delimiters](#delimiters)
    + [Examples](#examples)
    + [Development](#development)
       + [Running tests](#running-tests)
@@ -27,24 +25,38 @@ pip install hone
 ```
 
 ### Usage: Command Line
-To convert a CSV file located at `path/to/input.csv` to JSON (written to new file at `path/to/output.json`):
+```shell
+$ hone --help
+usage: hone [-h] [-d [DELIMITERS]] csv_filepath json_filepath
 
-```
-hone "path/to/input.csv" "path/to/output.json"
+positional arguments:
+  csv_filepath          Specify the filepath for the file to read CSV data
+                        from. To read from standard input, use a dash ("-") as
+                        the value
+  json_filepath         Specify the filepath for the file to output JSON data
+                        to. To write to standard output, use a dash ("-") as
+                        the value.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d [DELIMITERS], --delimiters [DELIMITERS]
+                        Override the default delimiters for generating a
+                        nested structure from column names. [DELIMITERS] must
+                        be a Python-compatible list of strings. The default
+                        value is [',', '_', ' '].
 ```
 
 ### Usage: Python Module
 ```
 import hone
 
-Hone = hone.Hone()
+optional_arguments = {
+  "delimiters": [" ", "_", ","]
+}
+Hone = hone.Hone(**optional_arguments)
 schema = Hone.get_schema('path/to/input.csv')   # returns nested JSON schema for input.csv
 result = Hone.convert('path/to/input.csv')      # returns converted JSON as Python dictionary
 ```
-### Standard I/O Support
-What if you want to pass in the CSV data via standard input and/or print the generated JSON data to standard output? Simply replace the appropriate filename with a dash (`-`). This will replace the input/output file with `stdin`/`stdout`.
-### Delimiters
-The delimiters that are used to generate the nested structure are commas, underscores, and spaces.
 
 ## Examples
 
