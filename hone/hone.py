@@ -2,8 +2,10 @@ from hone.utils import csv_utils
 import copy
 
 class Hone:
-    def __init__(self):
-        self.delimit_chars = [",", "_", " "]
+    DEFAULT_DELIMITERS = [",", "_", " "]
+
+    def __init__(self, delimiters=DEFAULT_DELIMITERS):
+        self.delimiters = delimiters
         self.csv_filepath = None
         self.csv = csv_utils.CSVUtils(self.csv_filepath)
 
@@ -130,7 +132,7 @@ class Hone:
         i = len(column_name) - 1
         while i >= 0:
             c = column_name[i]
-            if c in self.delimit_chars:
+            if c in self.delimiters:
                 split = self.clean_split(column_name[0:i])
                 splits.append(split)
             i -= 1
@@ -145,7 +147,7 @@ class Hone:
         i = 0
         while i < len(suffix):
             c = suffix[i]
-            if c not in self.delimit_chars:
+            if c not in self.delimiters:
                 return suffix[i:]
             i += 1
         return suffix
@@ -158,7 +160,7 @@ class Hone:
         i = len(split) - 1
         while i >= 0:
             c = split[i]
-            if c not in self.delimit_chars:
+            if c not in self.delimiters:
                 return split[0:i + 1]
             i -= 1
         return split
@@ -169,7 +171,7 @@ class Hone:
 
     def is_valid_prefix(self, prefix, base):
         if base.startswith(prefix):
-            if base[len(prefix)] in self.delimit_chars:
+            if base[len(prefix)] in self.delimiters:
                 return True
         return False
 
