@@ -27,7 +27,7 @@ pip install hone
 ### Usage: Command Line
 ```shell
 $ hone --help
-usage: hone [-h] [-d [DELIMITERS]] csv_filepath json_filepath
+usage: hone [-h] [-d [DELIMITERS]] [-s [SCHEMA]] csv_filepath json_filepath
 
 positional arguments:
   csv_filepath          Specify the filepath for the file to read CSV data
@@ -44,18 +44,23 @@ optional arguments:
                         nested structure from column names. [DELIMITERS] must
                         be a Python-compatible list of strings. The default
                         value is [',', '_', ' '].
+  -s [SCHEMA], --schema [SCHEMA]
+                        Manually specify the schema that defines the structure
+                        of the generated JSON, instead of having it
+                        automatically generated. [SCHEMA] must be a valid JSON
+                        object encoded as a string.
 ```
 
 ### Usage: Python Module
-```
+```python
 import hone
 
 optional_arguments = {
   "delimiters": [" ", "_", ","]
 }
 Hone = hone.Hone(**optional_arguments)
-schema = Hone.get_schema('path/to/input.csv')   # returns nested JSON schema for input.csv
-result = Hone.convert('path/to/input.csv')      # returns converted JSON as Python dictionary
+schema = Hone.get_schema('path/to/input.csv')  # nested JSON schema for input.csv
+result = Hone.convert('path/to/input.csv', schema=schema)  # final structure, nested according to schema
 ```
 
 ## Examples
