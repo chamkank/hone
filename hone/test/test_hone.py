@@ -21,9 +21,12 @@ class TestHone(unittest.TestCase):
         self.assertListEqual(actual_result, expected_result)
     def test_get_schema(self):
         h = hone.Hone()
-        actual_result = h.get_schema(csv_A_path)
-        expected_result = test_utils.parse_json_file(json_schema_A_path)
-        self.assertDictEqual(actual_result, expected_result)
+        actual_schema = h.get_schema(csv_A_path)
+        expected_schema = test_utils.parse_json_file(json_schema_A_path)
+        self.assertDictEqual(actual_schema, expected_schema)
+        actual_result = h.convert(csv_A_path, actual_schema)
+        expected_result = test_utils.parse_json_file(json_A_path)
+        self.assertListEqual(actual_result, expected_result)
     def test_nest_comma_csv(self):
         h = hone.Hone()
         actual_result = h.convert(csv_B_path)
