@@ -28,7 +28,7 @@ class CSVUtils:
     # Open CSV in given mode (default is read mode)
     @contextmanager
     def open_csv(self, mode='r', newline=''):
-        f = fileinput.input(files=(self.filepath), openhook=fileinput.hook_encoded("utf-8"))
+        f = fileinput.input(files=(self.filepath), openhook=fileinput.hook_encoded("utf-8-sig"))
         try:
             yield f
         finally:
