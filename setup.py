@@ -4,7 +4,6 @@ from setuptools import setup, find_packages
 setup(
     name='hone',
     version='0.2.1',
-    author='Chamantha Kankanamge',
     author_email='chamkdev@gmail.com',
     license='MIT',
     description='Convert CSV to automatically nested JSON.',
@@ -18,7 +17,6 @@ setup(
     python_requires='>=3.0',
     entry_points={'console_scripts': ['hone=hone.__main__:main']},
     classifiers=[
-        "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Utilities"
     ]
